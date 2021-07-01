@@ -1,38 +1,326 @@
-.App {
+html {
+  box-sizing: border-box;
+}
+body {
+  background: #ffdf8c;
+  margin: 0;
+  padding: 0;
+}
+ul,
+li {
+  padding: 0;
+  margin: 0;
+}
+
+ul li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.wrapper {
+  width: calc(100vw - 100px);
+  height: 100%;
+  background-color: #fff;
+  margin: 50px auto;
+  border-radius: 10px;
+  max-width: 1400px;
+}
+
+.header {
+  border-bottom: 1px solid #f6f6f6;
+  padding: 40px 0;
+}
+
+.header__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+
+  margin: 0 auto;
+}
+
+.header__logo {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header__logo img {
+  width: 48px;
+  margin-right: 15px;
+}
+
+.header__logo h1 {
+  color: #181818;
+  font-size: 24px;
+  letter-spacing: 1%;
+  text-transform: uppercase;
+  font-weight: 800;
+  padding: 0;
+  margin: 0;
+}
+
+.header__logo p {
+  color: #7b7b7b;
+  padding: 0;
+  margin: 0;
+}
+
+.button {
+  display: inline-block;
+  background-color: #fe5f1e;
+  border-radius: 30px;
+  padding: 10px 20px;
+  min-width: 100px;
   text-align: center;
+  cursor: pointer;
+  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+  border: 1px solid transparent;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.button:hover {
+  background-color: #fe5d1ede;
+}
+.button:active {
+  background-color: #ec4401de;
+  transform: translateY(1px);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.button--cart {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.button__delimiter {
+  width: 1px;
+  height: 25px;
+  background-color: rgba(255, 255, 255, 0.25);
+  margin-left: 14px;
+  margin-right: 14px;
+}
+
+.header__cart a {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.content {
+  padding: 40px 0;
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+/* ***************** Categories ****************/
+
+.categories ul {
+  display: flex;
+  padding-left: 0;
+}
+
+.categories ul li {
+  background-color: #d7dade;
+  padding: 13px 30px;
+  border-radius: 30px;
+  margin-right: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  /* transition: 0.1s ease-in-out; */
+  list-style: none;
+}
+.categories ul li:hover {
+  background-color: #8a8a8a;
+}
+
+.categories ul li.active {
+  background-color: #282828;
+  color: #fff;
+}
+
+.categories ul li:active {
+  /* background-color: #6e6e6e; */
+  transform: translateY(1px);
+}
+
+.categories_wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.sort-container {
+  position: relative;
+  margin-left: 100px;
+}
+
+.sort__label img {
+  margin-right: 8px;
+  transition: all 0.8 ease-in-out;
+}
+
+.sort__label b {
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+.sort__label span {
+  color: #fe5f1e;
+  border-bottom: 1px dashed #fe5f1e;
+  cursor: pointer;
+}
+
+.sort__popup {
+  position: absolute;
+  width: 160px;
+  background-color: #fff;
+  border-radius: 10px;
+  right: -10px;
+  margin-top: 15px;
+  overflow: hidden;
+  box-shadow: 0px 5px 15px rgb(0 0 0 / 9%);
+}
+
+.transform-arrow {
+  transform: rotate(180deg);
+}
+
+.sort__popup ul {
+  overflow: hidden;
+  padding: 0;
+}
+
+.sort__popup ul li {
+  list-style: none;
+  padding: 12px 20px;
+  cursor: pointer;
+}
+
+.sort__popup ul li.active {
+  font-weight: bold;
+  background: rgba(254, 95, 30, 0.05);
+  color: #fe5f1e;
+}
+
+.sort__popup ul li:hover {
+  background: rgba(254, 95, 30, 0.05);
+}
+
+.content__title {
+  margin: 35px 0;
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 30px;
+}
+
+.content_items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+/* *******************Pizza Block********************** */
+.pizza-block {
+  text-align: center;
+  width: 280px;
+  margin-bottom: 65px;
+}
+
+.pizza-block img {
+  width: 260px;
+}
+
+.pizza-block__selector {
   display: flex;
   flex-direction: column;
+  background-color: #f3f3f3;
+  padding: 6px;
+  border-radius: 10px;
+}
+
+.pizza-block__selector ul {
+  display: flex;
+  justify-content: space-around;
+  flex: 1;
+  margin-bottom: 5px;
+}
+
+.pizza-block__selector ul li {
+  padding: 8px;
+  flex: 1;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 8px;
+}
+
+.pizza-block ul li.active {
+  background-color: #fff;
+  box-shadow: 0px 2px 4px rgb(0 0 0 / 4%);
+  border-radius: 5px;
+  cursor: auto;
+}
+
+.pizza-block__price {
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 27px;
+  letter-spacing: 0.015em;
+}
+
+.pizza-block__bottom {
+  display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
+  margin-top: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+.button--outline {
+  background-color: #fff;
+  border-color: #fe5f1e;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.button--outline:hover span{
+  color: #fff;
+}
+.button--outline:hover i {
+  color: #fe5f1e;
+  background-color: #fff;
+}
+
+.button--add {
+  display: flex;
+  align-items: center;
+  vertical-align: middle;
+}
+
+.button--outline svg {
+  margin-right: 3px;
+}
+
+.button--outline:hover svg path {
+  fill: #fff;
+}
+
+i {
+  display: inline-block;
+  border-radius: 30px;
+  background-color: #fe5f1e;
+  color: #fff;
+  font-weight: 600;
+  width: 22px;
+  height: 22px;
+  font-style: normal;
+  font-size: 13px;
+  line-height: 22px;
+  position: relative;
+  top: 0;
+  left: 3px;
+}
+
+.button--outline span {
+  color: #fe5f1e;
 }
