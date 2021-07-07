@@ -105,6 +105,7 @@ ul li {
   color: #fff;
   font-size: 16px;
   font-weight: 600;
+  text-decoration: none;
 }
 
 .content {
@@ -264,6 +265,11 @@ ul li {
   cursor: auto;
 }
 
+.pizza-block ul li.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
 .pizza-block__price {
   font-weight: bold;
   font-size: 22px;
@@ -323,4 +329,44 @@ i {
 
 .button--outline span {
   color: #fe5f1e;
+}
+
+.cart-wrapper {
+  margin: 0 auto;
+}
+
+.cart-container {
+  width: 50%;
+  margin: 0 auto;
+}
+.cart-container h1 {
+  text-align: center;
+}
+
+.cart-container a {
+  text-decoration: none;
+}
+
+.cart-container p {
+  color: #7b7b7b;
+  text-align: center;
+  margin: 2px;
+}
+
+.button-return {
+  background-color: #000;
+  color: #fff;
+  border-radius: 30px;
+  padding: 10px 20px;
+  min-width: 100px;
+  text-align: center;
+  cursor: pointer;
+  margin-top: 20px;
+  width: 200px;
+  margin: 0 auto;
+}
+
+
+.button-return:active {
+  transform: translateY(1px);
 }

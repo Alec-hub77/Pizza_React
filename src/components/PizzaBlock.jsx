@@ -1,25 +1,45 @@
 import React from 'react';
 
-import plusSign from '../img/plus.svg';
-
-const pizzaImg =
-  'https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg';
-
 const PizzaBlock = (props) => {
-  console.log(props)
+  const [activeItem, setActiveItem] = React.useState(0);
+  const [activeSize, setActiveSize] = React.useState(0);
+
+  const onSelectActiveItem = (indexType) => {
+    setActiveItem(indexType);
+  };
+  const onSelectActiveSize = (indexSize) => {
+    setActiveSize(indexSize);
+  };
+
+  const pizzaTypes = ['тонкое', 'традиционное'];
+  const pizzaSyzes = [26, 30, 40];
+
   return (
     <div className="pizza-block">
       <img src={props.items.imageUrl} alt="pizza" />
       <h4>{props.items.name}</h4>
       <div className="pizza-block__selector">
         <ul>
-          <li className="active">тонкое</li>
-          <li>традиционное</li>
+          {pizzaTypes.map((itemType, indexType) => (
+            <li
+              key={`${indexType}${itemType}`}
+              onClick={() => onSelectActiveItem(indexType, itemType)}
+              className={activeItem === indexType ? 'active' : ''}
+            >
+              {itemType}
+            </li>
+          ))}
         </ul>
         <ul>
-          <li className="active">26 см.</li>
-          <li>30 см.</li>
-          <li>40 см.</li>
+          {pizzaSyzes.map((itemSyze, indexSyze) => (
+            <li
+              key={`${indexSyze}${itemSyze}`}
+              onClick={() => onSelectActiveSize(indexSyze, itemSyze)}
+              className={activeSize === indexSyze ? 'active' : ''}
+            >
+              {itemSyze} см.
+            </li>
+          ))}
         </ul>
       </div>
       <div className="pizza-block__bottom">
