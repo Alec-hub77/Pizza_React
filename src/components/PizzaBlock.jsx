@@ -1,9 +1,10 @@
 import React from 'react';
+import classNames from 'classnames';
 
 const PizzaBlock = (props) => {
-  const [activeItem, setActiveItem] = React.useState(0);
-  const [activeSize, setActiveSize] = React.useState(0);
-
+  const [activeItem, setActiveItem] = React.useState(props.items.types[0]);
+  const [activeSize, setActiveSize] = React.useState(props.items.sizes[0]);
+  console.log(props);
   const onSelectActiveItem = (indexType) => {
     setActiveItem(indexType);
   };
@@ -24,7 +25,10 @@ const PizzaBlock = (props) => {
             <li
               key={`${indexType}${itemType}`}
               onClick={() => onSelectActiveItem(indexType, itemType)}
-              className={activeItem === indexType ? 'active' : ''}
+              className={classNames({
+                active: activeItem === indexType,
+                disabled: !props.items.types.includes(indexType)
+              })}
             >
               {itemType}
             </li>
@@ -35,7 +39,10 @@ const PizzaBlock = (props) => {
             <li
               key={`${indexSyze}${itemSyze}`}
               onClick={() => onSelectActiveSize(indexSyze, itemSyze)}
-              className={activeSize === indexSyze ? 'active' : ''}
+              className={classNames({
+                active: activeSize === indexSyze,
+                disabled: !props.items.sizes.includes(itemSyze)
+              })}
             >
               {itemSyze} см.
             </li>
@@ -43,7 +50,7 @@ const PizzaBlock = (props) => {
         </ul>
       </div>
       <div className="pizza-block__bottom">
-        <div className="pizza-block__price">от 250</div>
+        <div className="pizza-block__price">от {props.items.price} грн.</div>
         <div className="button button--outline button--add">
           <svg
             width="12"
