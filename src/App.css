@@ -287,6 +287,7 @@ ul li {
 .button--outline {
   background-color: #fff;
   border-color: #fe5f1e;
+  width: 110px;
 }
 
 .button--outline:hover span{
@@ -301,6 +302,7 @@ ul li {
   display: flex;
   align-items: center;
   vertical-align: middle;
+  justify-content: space-evenly;
 }
 
 .button--outline svg {

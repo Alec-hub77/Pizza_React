@@ -4,7 +4,10 @@ import classNames from 'classnames';
 const PizzaBlock = (props) => {
   const [activeItem, setActiveItem] = React.useState(props.items.types[0]);
   const [activeSize, setActiveSize] = React.useState(props.items.sizes[0]);
-  console.log(props);
+  const [addPizza, setAddPizza] = React.useState(null)
+
+  
+  
   const onSelectActiveItem = (indexType) => {
     setActiveItem(indexType);
   };
@@ -51,7 +54,7 @@ const PizzaBlock = (props) => {
       </div>
       <div className="pizza-block__bottom">
         <div className="pizza-block__price">от {props.items.price} грн.</div>
-        <div className="button button--outline button--add">
+        <div className="button button--outline button--add" onClick={() =>setAddPizza(addPizza +1)}>
           <svg
             width="12"
             height="12"
@@ -65,7 +68,7 @@ const PizzaBlock = (props) => {
             />
           </svg>
           <span>Добавить</span>
-          <i>2</i>
+          {addPizza && <i>{addPizza}</i>}
         </div>
       </div>
     </div>
