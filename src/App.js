@@ -4,7 +4,16 @@ import './App.css';
 import { Header } from './components';
 import { Home, Cart } from './pages';
 
+
+
 function App() {
+
+  // React.useEffect(() => {
+  //   axios.get('http://localhost:3000/db.json').then(({data}) => {
+  //     setPizzas(data.pizzas)
+  //   })
+  // }, [])
+
   return (
     <div className="wrapper">
       <Header />

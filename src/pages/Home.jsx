@@ -13,7 +13,10 @@ function Home() {
         <div>
              <div className="categories_wrapper">
             <Categories />
-            <Sort />
+            <Sort sortItems ={[
+              {name: 'популярности', type: 'popular'},
+              {name: 'цене', type: 'price'},
+              {name: 'алфавиту', type: 'alphabet'}]} />
           </div>
           <h2 className="content__title">Все пиццы</h2>
           <div className="content_items">

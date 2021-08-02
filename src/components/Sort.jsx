@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import arrow from '../img/arrow-top.svg';
 
-const Sort = () => {
-  const sortItems = ['популярности', 'цене', 'алфавиту'];
+const Sort = ({sortItems}) => {
+    
 
   const [activeItem, setActiveItem] = useState(0);
   const [visiblePopup, setVisiblePopup] = useState(false);
   const sortRef = React.useRef();
-  const activeLabel = sortItems[activeItem]
+  const activeLabel = sortItems[activeItem].name
   
   const changeVisiblePopup = () => {
     setVisiblePopup(!visiblePopup);  
@@ -36,6 +36,7 @@ const Sort = () => {
       <div className="sort__label">
         <img
           src={arrow}
+          alt={'arrow'}
           className={visiblePopup === true ? 'transform-arrow' : ''}
         />
         <b>Сортировка по:</b>
@@ -44,13 +45,13 @@ const Sort = () => {
       {visiblePopup && (
         <div className="sort__popup">
           <ul>
-            {sortItems.map((name, index) => (
+            {sortItems.map((obj, index) => (
               <li
-                onClick={() => onSelectItem(index, name)}
-                key={`${index} ${name}`}
+                onClick={() => onSelectItem(index)}
+                key={`${index} ${obj.type}`}
                 className={activeItem === index ? 'active' : ''}
               >
-                {name}
+                {obj.name}
               </li>
             ))}
           </ul>
