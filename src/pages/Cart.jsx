@@ -125,7 +125,7 @@ function Cart() {
             </div>
           </div>
           <div className="cart__item-price">
-            <b>750</b>
+            <b>750 $</b>
           </div>
           <div className="cart__item-remove">
             <div className="button_remove">

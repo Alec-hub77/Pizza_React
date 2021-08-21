@@ -2,10 +2,13 @@ import React from 'react';
 import classNames from 'classnames';
 
 
-const PizzaBlock = (props) => {
-  const [activeItem, setActiveItem] = React.useState(props.items.types[0]);
-  const [activeSize, setActiveSize] = React.useState(props.items.sizes[0]);
-  const [addPizza, setAddPizza] = React.useState(null)
+const PizzaBlock = ({id, name, imageUrl, types, sizes, price, onClickAddPizza, addedCount}) => {
+  const pizzaTypes = ['тонкое', 'традиционное'];
+  const pizzaSyzes = [26, 30, 40];
+  
+  const [activeItem, setActiveItem] = React.useState(types[0]);
+  const [activeSize, setActiveSize] = React.useState(0);
+  
 
   
   
@@ -16,14 +19,25 @@ const PizzaBlock = (props) => {
     setActiveSize(indexSize);
   };
 
-  const pizzaTypes = ['тонкое', 'традиционное'];
-  const pizzaSyzes = [26, 30, 40];
+  const handleAddPizza = () => {
+    const obj = {
+      id,
+      name,
+      imageUrl,
+      price,
+      size: pizzaSyzes[activeSize],
+      type: pizzaTypes[activeItem]
+    }
+    onClickAddPizza(obj)
+    
+  }
 
+  
  
   return (
     <div className="pizza-block">
-      <img src={props.items.imageUrl} alt="pizza" />
-      <h4>{props.items.name}</h4>
+      <img src={imageUrl} alt="pizza" />
+      <h4>{name}</h4>
       <div className="pizza-block__selector">
         <ul>
           {pizzaTypes.map((itemType, indexType) => (
@@ -32,7 +46,7 @@ const PizzaBlock = (props) => {
               onClick={() => onSelectActiveItem(indexType, itemType)}
               className={classNames({
                 active: activeItem === indexType,
-                disabled: !props.items.types.includes(indexType)
+                disabled: !types.includes(indexType)
               })}
             >
               {itemType}
@@ -40,13 +54,13 @@ const PizzaBlock = (props) => {
           ))}
         </ul>
         <ul>
-          {pizzaSyzes.map((itemSyze, indexSyze) => (
+          {pizzaSyzes.map((itemSyze, indexSize) => (
             <li
-              key={`${indexSyze}${itemSyze}`}
-              onClick={() => onSelectActiveSize(indexSyze, itemSyze)}
+              key={`${indexSize}${itemSyze}`}
+              onClick={() => onSelectActiveSize(indexSize)}
               className={classNames({
-                active: activeSize === indexSyze,
-                disabled: !props.items.sizes.includes(itemSyze)
+                active: activeSize === indexSize,
+                disabled: !sizes.includes(itemSyze)
               })}
             >
               {itemSyze} см.
@@ -55,8 +69,8 @@ const PizzaBlock = (props) => {
         </ul>
       </div>
       <div className="pizza-block__bottom">
-        <div className="pizza-block__price">от {props.items.price} грн.</div>
-        <div className="button button--outline button--add" onClick={() =>setAddPizza(addPizza +1)}>
+        <div className="pizza-block__price">от {price} $</div>
+        <div className="button button--outline button--add" onClick={handleAddPizza}>
           <svg
             width="12"
             height="12"
@@ -70,7 +84,7 @@ const PizzaBlock = (props) => {
             />
           </svg>
           <span>Добавить</span>
-          {addPizza && <i>{addPizza}</i>}
+          {addedCount && <i>{addedCount}</i>}
         </div>
       </div>
     </div>
